@@ -19,23 +19,27 @@ let state = 'New York'
 let country = 'USA'
 let price = 400000
 
-/** TO DO - SET UP TEST TO CHECK MODEL VALIDATIONS */
-
 describe('Lisiting Model Validations', () => {
-  const listing = Listing.build({city, state, country, price})
-
-  // expect(listing.validate()).to.throw("notNull Violation: listing.street cannot be null")
-  it('throws an error if street is missing', () => {
+  it('throws an error if city, state, country or price is missing', () => {
+    const listing = Listing.build()
     return listing
       .validate()
       .then(() => {
-        console.log('went in the then')
+        throw new Error('Promise should have returned an error')
       })
       .catch(err => {
         // console.log("I'm logging the error: ", err.errors)
         expect(err).to.have.nested.include({
           'errors[0].type': 'notNull Violation',
-          'errors[0].path': 'street'
+          'errors[0].path': 'street',
+          'errors[1].type': 'notNull Violation',
+          'errors[1].path': 'city',
+          'errors[2].type': 'notNull Violation',
+          'errors[2].path': 'state',
+          'errors[3].type': 'notNull Violation',
+          'errors[3].path': 'country',
+          'errors[4].type': 'notNull Violation',
+          'errors[4].path': 'price'
         })
       })
   })
