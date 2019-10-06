@@ -8,10 +8,10 @@ const User = db.define('user', {
     unique: true,
     allowNull: false
   },
-  username: {
+  name: {
     type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
+    unique: false,
+    allowNull: true
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
