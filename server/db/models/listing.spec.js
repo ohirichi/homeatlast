@@ -61,3 +61,15 @@ describe('Listing Model Functionality', () => {
     expect(listing.baths).to.equal(0)
   })
 })
+
+/** Some notes on chai testing:
+ *
+ * To avoid having to know the exact error object could have used the below for the tests:
+ *
+ * import chaiProperties from 'chai-properties';
+import chaiThings from 'chai-things';
+chai.use(chaiProperties);
+chai.use(chaiThings);
+
+
+ */
