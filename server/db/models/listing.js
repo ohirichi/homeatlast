@@ -62,4 +62,10 @@ const Listing = db.define(
   }
 )
 
+//Class Funtion: Search by Criteria
+
+Listing.findByCriteria = function(searchObj) {
+  return Listing.findAll({where: searchObj})
+}
+
 module.exports = Listing
